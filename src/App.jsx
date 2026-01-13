@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Options from "./components/Options";
 import Feedback from "./components/Feedback";
 import Notification from "./components/Notification";
+import Description from "./components/Description";
 
 export default function App() {
   const initialState = { good: 0, neutral: 0, bad: 0 };
@@ -24,9 +25,7 @@ export default function App() {
     }));
   };
 
-  const resetFeedback = () => {
-    setFeedback(initialState);
-  };
+  const resetFeedback = () => setFeedback(initialState);
 
   const totalFeedback = feedback.good + feedback.neutral + feedback.bad;
   const positivePercentage =
@@ -35,10 +34,8 @@ export default function App() {
   return (
     <div className="app">
       <h1>Sip Happens Café</h1>
-      <p>
-        Please leave your feedback about our service by selecting one of the
-        options below.
-      </p>
+
+      <Description />
 
       <Options
         updateFeedback={updateFeedback}
