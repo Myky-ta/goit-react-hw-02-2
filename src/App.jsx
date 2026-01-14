@@ -1,19 +1,17 @@
 import { useState, useEffect } from "react";
+import Description from "./components/Description";
 import Options from "./components/Options";
 import Feedback from "./components/Feedback";
 import Notification from "./components/Notification";
-import Description from "./components/Description";
 
 export default function App() {
   const initialState = { good: 0, neutral: 0, bad: 0 };
 
-  // Ініціалізація стану з localStorage
   const [feedback, setFeedback] = useState(() => {
     const saved = localStorage.getItem("feedback");
     return saved ? JSON.parse(saved) : initialState;
   });
 
-  // Збереження стану у localStorage при кожній зміні
   useEffect(() => {
     localStorage.setItem("feedback", JSON.stringify(feedback));
   }, [feedback]);
@@ -33,8 +31,6 @@ export default function App() {
 
   return (
     <div className="app">
-      <h1>Sip Happens Café</h1>
-
       <Description />
 
       <Options
